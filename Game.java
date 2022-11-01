@@ -1,3 +1,5 @@
+import javax.management.Descriptor;
+
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -40,23 +42,26 @@ class Game
      */
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
-      
+        Room Bellcourt, HagridsHut, GreatHall,TrophyRoom, Staircaise, Basement, SlytherinCommonRoom;
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        // initialise room exits
-        outside.setExits(null, theatre, lab, pub);
-        theatre.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        Bellcourt = new Room("in the courtyard in front of the bell tower");
+        HagridsHut = new Room("in front of Hagrids hut");
+        GreatHall = new Room("in the great hall");
+        TrophyRoom = new Room("in the trophy room of Hogwarts");
+        Staircaise = new Room ("in the only Staircase in the world where the stairs are moving");
+        Basement = new Room("in the basement");
+        SlytherinCommonRoom = new Room ("in front of the Slytherin common room. You need a password to enter");
 
-        currentRoom = outside;  // start game outside
+        // initialise room exits
+        Bellcourt.setExits(GreatHall, null,  HagridsHut, null);
+        HagridsHut.setExits(Bellcourt, null, null, null);
+        GreatHall.setExits(TrophyRoom, null, Bellcourt, Staircaise);
+        TrophyRoom.setExits(null, null, GreatHall, null);
+        Staircaise.setExits(null, GreatHall, null,Basement);
+        Basement.setExits(SlytherinCommonRoom, Staircaise, null, null);  
+        SlytherinCommonRoom.setExits(null, null, Basement,null);
+        
+        currentRoom = Bellcourt;  // start game outside
     }
 
     /**
