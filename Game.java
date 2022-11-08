@@ -42,25 +42,58 @@ class Game
      */
     private void createRooms()
     {
-        Room Bellcourt, HagridsHut, GreatHall,TrophyRoom, Staircaise, Basement, SlytherinCommonRoom;
+        Room Bellcourt, HagridsHut, GreatHall,TrophyRoom, Staircase, Basement, SlytherinCommonRoom, PotionsClassRoom, FirstFloor, SecondFloor, Libary, InnerCourtyard, 
+        TransformationClassRoom, ThirdFloor, FourthFloor, FifthFloor;
         // create the rooms
         Bellcourt = new Room("in the courtyard in front of the bell tower");
         HagridsHut = new Room("in front of Hagrids hut");
         GreatHall = new Room("in the great hall");
         TrophyRoom = new Room("in the trophy room of Hogwarts");
-        Staircaise = new Room ("in the only Staircase in the world where the stairs are moving");
+        Staircase = new Room ("in the only Staircase in the world where the stairs are moving");
         Basement = new Room("in the basement");
         SlytherinCommonRoom = new Room ("in front of the Slytherin common room. You need a password to enter");
-
+        PotionsClassRoom = new Room ("in the class room for the subject Potions");
+        FirstFloor = new Room ("in the first floor of the staircase");
+        SecondFloor = new Room ("in the second floor of the staircase");
+        Libary = new Room("in the Libary of Hogwarts");
+        InnerCourtyard = new Room("in the inner courtyard");
+        TransformationClassRoom =new Room("in the class room for the subject transformation");
+        ThirdFloor = new Room("in the third floor of the staircase");
+        FourthFloor =new Room("in the fourth floor of the staircase");
+        FifthFloor= new Room("in the fifth floor of the staircase");
+ 
         // initialise room exits
+        //outside
         Bellcourt.setExits(GreatHall, null,  HagridsHut, null);
         HagridsHut.setExits(Bellcourt, null, null, null);
-        GreatHall.setExits(TrophyRoom, null, Bellcourt, Staircaise);
+
+        //inside
+        GreatHall.setExits(TrophyRoom, null, Bellcourt, Staircase);
         TrophyRoom.setExits(null, null, GreatHall, null);
-        Staircaise.setExits(null, GreatHall, null,Basement);
-        Basement.setExits(SlytherinCommonRoom, Staircaise, null, null);  
+        Staircase.setExits(FirstFloor, GreatHall, null,Basement);
+
+        //basement
+        Basement.setExits(SlytherinCommonRoom, Staircase, null, PotionsClassRoom);  
         SlytherinCommonRoom.setExits(null, null, Basement,null);
-        
+        PotionsClassRoom.setExits(null, Basement, null, null);
+        //first floor
+
+        FirstFloor.setExits(SecondFloor, null, Staircase, null);
+
+        //second floor
+        SecondFloor.setExits(ThirdFloor, InnerCourtyard, FirstFloor, Libary);
+        Libary.setExits(null, SecondFloor, null, null);
+        InnerCourtyard.setExits(null, TransformationClassRoom, null, SecondFloor);
+        TransformationClassRoom.setExits(null, null, null, InnerCourtyard);
+
+        //third floor
+        ThirdFloor.setExits(FourthFloor, null, SecondFloor, null);
+
+        //fourth floor
+        FourthFloor.setExits(FifthFloor, null, ThirdFloor, null);
+
+        //fifth floor
+        FifthFloor.setExits(null, null, FourthFloor, null);
         currentRoom = Bellcourt;  // start game outside
     }
 
