@@ -25,6 +25,7 @@ class Game
 
     private Parser parser;
     private Room currentRoom;
+    private Player player;
         
     /**
      * Create the game and initialise its internal map.
@@ -33,6 +34,7 @@ class Game
     {
         createRooms();
         parser = new Parser();
+        player = new Player(10);
     }
 
     /**
@@ -41,7 +43,7 @@ class Game
     private void createRooms()
     {
         Room Bellcourt, HagridsHut, GreatHall,TrophyRoom, Staircase, Basement, SlytherinCommonRoom, PotionsClassRoom, FirstFloor, SecondFloor, Libary, InnerCourtyard, 
-        TransformationClassRoom, ThirdFloor, FourthFloor, FifthFloor;
+        TransformationClassRoom, ThirdFloor, FourthFloor, FifthFloor, SixthFloor, SeventhFloor;
         // create the rooms
         Bellcourt = new Room("in the courtyard in front of the bell tower");
         HagridsHut = new Room("in front of Hagrids hut");
@@ -59,6 +61,8 @@ class Game
         ThirdFloor = new Room("in the third floor of the staircase");
         FourthFloor =new Room("in the fourth floor of the staircase");
         FifthFloor= new Room("in the fifth floor of the staircase");
+        SixthFloor= new Room("in the sixth floor of the staircase");
+        SeventhFloor= new Room( "in the seventh floor of the staircase");
  
         // initialise room exits
         //outside
@@ -91,7 +95,14 @@ class Game
         FourthFloor.setExits(FifthFloor, null, ThirdFloor, null);
 
         //fifth floor
-        FifthFloor.setExits(null, null, FourthFloor, null);
+        FifthFloor.setExits(SixthFloor, null, FourthFloor, null);
+
+        //sixth floor
+        SixthFloor.setExits(SeventhFloor, null, FifthFloor, null);
+
+        //seventh floor
+        SeventhFloor.setExits(null, null, SixthFloor,null);
+
         currentRoom = Bellcourt;  // start game outside
     }
 
@@ -119,9 +130,9 @@ class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to Adventure!");
-        System.out.println("Adventure is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Welcome to Hogwarts");
+        System.out.println("The other first years got thier breifing. If you dont have it, you need to find your way on your own");
+        System.out.println("Type 'help' if you need help for that.");
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
@@ -172,6 +183,7 @@ class Game
     {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
+        System.out.println("learning progress "+ player.getLearn());
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
