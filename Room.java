@@ -18,7 +18,7 @@ import java.util.HashMap;
 class Room 
 {
     public String description;
-    public HashMap<String, Room>Exits;
+    public HashMap<String, Room>exits;
 
     /**
      * Create a room described "description". Initially, it has
@@ -28,7 +28,7 @@ class Room
     public Room(String description) 
     {
         this.description = description;
-        Exits = new HashMap<String, Room>();
+        exits = new HashMap<String, Room>();
     }
 
     /**
@@ -37,7 +37,15 @@ class Room
      */
     public void setExit(String direction, Room nextRoom) 
     {
-       Exits.put(direction, nextRoom);
+       exits.put(direction, nextRoom);
+    }
+
+    //TODO: Loop über die HashMap -> jede direction dem String hinzufügen, dann den String returnen
+    public String getExitsasString(){
+        String exits = "";
+        for ()
+
+        return exits;
     }
 
     /**
@@ -49,7 +57,7 @@ class Room
         return description;
     }
     public Room getExit(String direction){
-        return (Room) Exits.get(direction);
+        return (Room) exits.get(direction);
     }
 
 }

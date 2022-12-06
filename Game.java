@@ -41,7 +41,7 @@ class Game {
     private void createRooms() {
         Room Bellcourt, HagridsHut, GreatHall, TrophyRoom, Staircase, Basement, SlytherinCommonRoom, PotionsClassRoom,
                 FirstFloor, SecondFloor, Libary, InnerCourtyard,
-                TransformationClassRoom, ThirdFloor, FourthFloor, FifthFloor, SixthFloor, SeventhFloor;
+                TransformationClassRoom, SmartWizardPortrait, ThirdFloor, FourthFloor, FifthFloor, SixthFloor, SeventhFloor;
         // create the rooms
         Bellcourt = new Room("in the courtyard in front of the bell tower");
         HagridsHut = new Room("in front of Hagrids hut");
@@ -56,50 +56,71 @@ class Game {
         Libary = new Room("in the Libary of Hogwarts");
         InnerCourtyard = new Room("in the inner courtyard");
         TransformationClassRoom = new Room("in the class room for the subject transformation");
+        SmartWizardPortrait = new Room("say may passwort to go through this portrait");
         ThirdFloor = new Room("in the third floor of the staircase");
         FourthFloor = new Room("in the fourth floor of the staircase");
         FifthFloor = new Room("in the fifth floor of the staircase");
         SixthFloor = new Room("in the sixth floor of the staircase");
         SeventhFloor = new Room("in the seventh floor of the staircase");
 
+
         // initialise room exits
         // outside
-        Bellcourt.setExits(GreatHall, null, HagridsHut, null);
-        HagridsHut.setExits(Bellcourt, null, null, null);
+        Bellcourt.setExit("north" , GreatHall);
+        Bellcourt.setExit("south" , HagridsHut);
+        HagridsHut.setExit("north" , HagridsHut );
 
         // inside
-        GreatHall.setExits(TrophyRoom, null, Bellcourt, Staircase);
-        TrophyRoom.setExits(null, null, GreatHall, null);
-        Staircase.setExits(FirstFloor, GreatHall, null, Basement);
+        GreatHall.setExit("north" , TrophyRoom);
+        GreatHall.setExit( "south" , Bellcourt);
+        GreatHall.setExit("west" ,  Staircase);
+        TrophyRoom.setExit("south" , GreatHall);
+        Staircase.setExit("up" , FirstFloor);
+        Staircase.setExit("east" , GreatHall);
+        Staircase.setExit("down" ,  Basement);
 
         // basement
-        Basement.setExits(SlytherinCommonRoom, Staircase, null, PotionsClassRoom);
-        SlytherinCommonRoom.setExits(null, null, Basement, null);
-        PotionsClassRoom.setExits(null, Basement, null, null);
+        Basement.setExit("north" , SlytherinCommonRoom);
+        Basement.setExit("up" ,  Staircase);
+        Basement.setExit("west" , PotionsClassRoom);
+        SlytherinCommonRoom.setExit("south" , Basement);
+        PotionsClassRoom.setExit("east" , Basement);
         // first floor
 
-        FirstFloor.setExits(SecondFloor, null, Staircase, null);
+        FirstFloor.setExit("up" , SecondFloor);
+        FirstFloor.setExit ("down" , Staircase);
 
         // second floor
-        SecondFloor.setExits(ThirdFloor, InnerCourtyard, FirstFloor, Libary);
-        Libary.setExits(null, SecondFloor, null, null);
-        InnerCourtyard.setExits(null, TransformationClassRoom, null, SecondFloor);
-        TransformationClassRoom.setExits(null, null, null, InnerCourtyard);
+        SecondFloor.setExit("up" , ThirdFloor);
+        SecondFloor.setExit("east" , InnerCourtyard);
+        SecondFloor.setExit("down" , FirstFloor);
+        SecondFloor.setExit("west" , Libary);
+        SecondFloor.setExit("north" , SmartWizardPortrait);
+        SmartWizardPortrait.setExit("south" , SecondFloor);
+        SmartWizardPortrait.setExit("my passwort" , Bellcourt);
+        Libary.setExit("east" , SecondFloor);
+        InnerCourtyard.setExit("east" , TransformationClassRoom);
+        InnerCourtyard.setExit("west" , SecondFloor);
+        TransformationClassRoom.setExit("west" , InnerCourtyard);
 
         // third floor
-        ThirdFloor.setExits(FourthFloor, null, SecondFloor, null);
+        ThirdFloor.setExit("up" , FourthFloor);
+        ThirdFloor.setExit("down" , SecondFloor);
 
         // fourth floor
-        FourthFloor.setExits(FifthFloor, null, ThirdFloor, null);
+        FourthFloor.setExit("up" , FifthFloor);
+        FourthFloor.setExit("down" ,  ThirdFloor);
 
         // fifth floor
-        FifthFloor.setExits(SixthFloor, null, FourthFloor, null);
+        FifthFloor.setExit("up" , SixthFloor);
+        FifthFloor.setExit("down" , FourthFloor);
 
         // sixth floor
-        SixthFloor.setExits(SeventhFloor, null, FifthFloor, null);
+        SixthFloor.setExit("up" , SeventhFloor);
+        SixthFloor.setExit("down" , FifthFloor);
 
         // seventh floor
-        SeventhFloor.setExits(null, null, SixthFloor, null);
+        SeventhFloor.setExit("down" , SixthFloor);
 
         currentRoom = Bellcourt; // start game outside
     }
@@ -135,17 +156,16 @@ class Game {
 
     }
 
-    private void roomInfo() {
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if (currentRoom.northExit != null)
-            System.out.print("north ");
-        if (currentRoom.eastExit != null)
-            System.out.print("east ");
-        if (currentRoom.southExit != null)
-            System.out.print("south ");
-        if (currentRoom.westExit != null)
-            System.out.print("west ");
+    private String roomInfo() {
+         String ergebnis = ("Exits: ");
+        if (northExit != null)
+           ergebnis += "north ";
+        if (eastExit != null)
+           ergebnis +="east ";
+        if (southExit != null)
+           ergebnis +="south ";
+        if (westExit != null)
+            ergebnis += "west ";
         System.out.println();
     }
 
