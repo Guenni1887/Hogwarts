@@ -39,9 +39,9 @@ class Game {
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        Room Bellcourt, HagridsHut, GreatHall, TrophyRoom, Staircase, Basement, SlytherinCommonRoom, PotionsClassRoom,
-                FirstFloor, SecondFloor, Libary, InnerCourtyard,
-                TransformationClassRoom, SmartWizardPortrait, ThirdFloor, FourthFloor, FifthFloor, SixthFloor, SeventhFloor;
+        Room Bellcourt, HagridsHut, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait, SlytherinCommonRoom, PotionsClassRoom,
+                FirstFloor, FirstFloorHallway, HerbalismClassRoom, SecondFloor, Libary, InnerCourtyard,
+                TransformationClassRoom, SmartWizardPortrait, ThirdFloor, FourthFloor,DefenceAgainstTheDarkArts, FifthFloor, SixthFloor, SixthFloorHallway, SeventhFloor;
         // create the rooms
         Bellcourt = new Room("in the courtyard in front of the bell tower");
         HagridsHut = new Room("in front of Hagrids hut");
@@ -49,18 +49,23 @@ class Game {
         TrophyRoom = new Room("in the trophy room of Hogwarts");
         Staircase = new Room("in the only Staircase in the world where the stairs are moving");
         Basement = new Room("in the basement");
+        BasementPortrait =new Room("infront of the basement portrait");
         SlytherinCommonRoom = new Room("in front of the Slytherin common room. You need a password to enter");
         PotionsClassRoom = new Room("in the class room for the subject Potions");
         FirstFloor = new Room("in the first floor of the staircase");
+        FirstFloorHallway =new Room("in the hallway of the first floor");
+        HerbalismClassRoom = new Room("in the class room for herbalism");
         SecondFloor = new Room("in the second floor of the staircase");
         Libary = new Room("in the Libary of Hogwarts");
         InnerCourtyard = new Room("in the inner courtyard");
         TransformationClassRoom = new Room("in the class room for the subject transformation");
-        SmartWizardPortrait = new Room("say may passwort to go through this portrait");
+        SmartWizardPortrait = new Room("infront of the Portrait of the smart wizard. You are allowed to go through this portrait");
         ThirdFloor = new Room("in the third floor of the staircase");
         FourthFloor = new Room("in the fourth floor of the staircase");
+        DefenceAgainstTheDarkArts= new Room("in the class room for defence against the dark arts");
         FifthFloor = new Room("in the fifth floor of the staircase");
         SixthFloor = new Room("in the sixth floor of the staircase");
+        SixthFloorHallway =new Room("in the hallway of the sixth floor");
         SeventhFloor = new Room("in the seventh floor of the staircase");
 
 
@@ -83,12 +88,20 @@ class Game {
         Basement.setExit("north" , SlytherinCommonRoom);
         Basement.setExit("up" ,  Staircase);
         Basement.setExit("west" , PotionsClassRoom);
+        Basement.setExit("east" , BasementPortrait);
+        BasementPortrait.setExit("west" , Basement);
+        BasementPortrait.setExit("through" , SixthFloorHallway);
         SlytherinCommonRoom.setExit("south" , Basement);
         PotionsClassRoom.setExit("east" , Basement);
+       
         // first floor
-
         FirstFloor.setExit("up" , SecondFloor);
         FirstFloor.setExit ("down" , Staircase);
+        FirstFloor.setExit("north" , FirstFloorHallway);
+        FirstFloorHallway.setExit("south" , FirstFloor);
+        FirstFloorHallway.setExit("east" , HerbalismClassRoom);
+        HerbalismClassRoom.setExit("west" , FirstFloorHallway);
+
 
         // second floor
         SecondFloor.setExit("up" , ThirdFloor);
@@ -97,7 +110,7 @@ class Game {
         SecondFloor.setExit("west" , Libary);
         SecondFloor.setExit("north" , SmartWizardPortrait);
         SmartWizardPortrait.setExit("south" , SecondFloor);
-        SmartWizardPortrait.setExit("my passwort" , Bellcourt);
+        SmartWizardPortrait.setExit("through" , Bellcourt);
         Libary.setExit("east" , SecondFloor);
         InnerCourtyard.setExit("east" , TransformationClassRoom);
         InnerCourtyard.setExit("west" , SecondFloor);
@@ -110,6 +123,8 @@ class Game {
         // fourth floor
         FourthFloor.setExit("up" , FifthFloor);
         FourthFloor.setExit("down" ,  ThirdFloor);
+        FourthFloor.setExit("north" , DefenceAgainstTheDarkArts);
+        DefenceAgainstTheDarkArts.setExit( "south" , FourthFloor);
 
         // fifth floor
         FifthFloor.setExit("up" , SixthFloor);
@@ -118,6 +133,8 @@ class Game {
         // sixth floor
         SixthFloor.setExit("up" , SeventhFloor);
         SixthFloor.setExit("down" , FifthFloor);
+        SixthFloor.setExit("north" , SixthFloorHallway);
+        SixthFloorHallway.setExit("south" , SixthFloor);
 
         // seventh floor
         SeventhFloor.setExit("down" , SixthFloor);
@@ -128,6 +145,11 @@ class Game {
     /**
      * Main play routine. Loops until end of play.
      */
+
+    public void learn(){
+       player.setLearn(2);
+
+    }
     public void play() {
         printWelcome();
 
@@ -152,21 +174,24 @@ class Game {
                 "The other first years got thier breifing. If you dont have it, you need to find your way on your own");
         System.out.println("Type 'help' if you need help for that.");
         System.out.println();
-        roomInfo();
+        System.out.println( roomInfo() );
 
     }
 
     private String roomInfo() {
-         String ergebnis = ("Exits: ");
-        if (northExit != null)
-           ergebnis += "north ";
-        if (eastExit != null)
-           ergebnis +="east ";
-        if (southExit != null)
-           ergebnis +="south ";
-        if (westExit != null)
-            ergebnis += "west ";
-        System.out.println();
+        /*
+         * String ergebnis = ("Exits: ");
+         * if (northExit != null)
+         * ergebnis += "north ";
+         * if (eastExit != null)
+         * ergebnis +="east ";
+         * if (southExit != null)
+         * ergebnis +="south ";
+         * if (westExit != null)
+         * ergebnis += "west ";
+         * System.out.println();
+         */
+        return currentRoom.getExitsasString();
     }
 
     /**
@@ -224,12 +249,13 @@ class Game {
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
-       
+
         if (nextRoom == null)
             System.out.println("There is no door!");
         else {
             currentRoom = nextRoom;
-            roomInfo();
+            System.out.println("you are " +  currentRoom.getDescription());
+            System.out.println (roomInfo());
         }
     }
 

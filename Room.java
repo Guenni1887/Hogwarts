@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 /*
  * Class Room - a room in an adventure game.
@@ -15,48 +16,49 @@ import java.util.HashMap;
  * @version 1.0 (February 2002)
  */
 
-class Room 
-{
-    public String description;
-    public HashMap<String, Room>exits;
+class Room {
+    private String description;
+    private HashMap<String, Room> exits;
+    private int learningeffect;
 
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      */
-    public Room(String description) 
-    {
+    public Room(String description) {
         this.description = description;
         exits = new HashMap<String, Room>();
     }
 
     /**
-     * Define the exits of this room.  Every direction either leads
+     * Define the exits of this room. Every direction either leads
      * to another room or is null (no exit there).
      */
-    public void setExit(String direction, Room nextRoom) 
-    {
-       exits.put(direction, nextRoom);
+    public void setExit(String direction, Room nextRoom) {
+        exits.put(direction, nextRoom);
     }
 
-    //TODO: Loop über die HashMap -> jede direction dem String hinzufügen, dann den String returnen
-    public String getExitsasString(){
-        String exits = "";
-        for ()
+   
+    public String getExitsasString() {
+        String exitsString = "exits: ";
 
-        return exits;
+        for (String key : exits.keySet()) {
+            exitsString += (key + " ");
+        }
+
+        return exitsString;
     }
 
     /**
      * Return the description of the room (the one that was defined
      * in the constructor).
      */
-   public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
-    public Room getExit(String direction){
+
+    public Room getExit(String direction) {
         return (Room) exits.get(direction);
     }
 
