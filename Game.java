@@ -172,9 +172,12 @@ class Game {
     /**
      * Main play routine. Loops until end of play.
      */
+    
 
-    public void learn(){
-       player.setLearn(0);
+    public void learn(int count){
+        if (currentRoom == PotionsClassRoom)
+        setLearn(1);
+       
 
     }
     public void play() {
