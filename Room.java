@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.effect.Effect;
+
 /*
  * Class Room - a room in an adventure game.
  *
@@ -19,16 +21,30 @@ import java.util.Map;
 class Room {
     private String description;
     private HashMap<String, Room> exits;
-    private int learningeffect;
+    private int learningEffect;
+    private boolean wasVisited;
 
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      */
-    public Room(String description) {
+    public Room(String description , int effect) {
         this.description = description;
         exits = new HashMap<String, Room>();
+        this.learningEffect = effect;
+        this.wasVisited = false;
+    }
+
+    public int getLearningeffect(){
+        if (effect == 1)
+        learningEffect += 1;
+    }
+
+    public boolean getWasVisited(){
+        if (wasVisited == true);
+        return ;
+
     }
 
     /**

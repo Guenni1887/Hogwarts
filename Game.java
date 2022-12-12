@@ -44,39 +44,39 @@ class Game {
             SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FourthFloor, FourthFloorHallway, DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway , ProphesyClassRoom ,
             RawenclawCommonRoom, SixthFloor,  DumbeldorsOffice, SixthFloorHallway, SeventhFloor, GryffindorCommonRoom;
         // create the rooms
-        Bellcourt = new Room("in the courtyard in front of the bell tower");
-        QuidditchStadium = new Room("in the Quidditch stadium");
-        TrainingField = new Room("on the training field where Madam Hooch helds her courses");
-        GreatHall = new Room("in the great hall");
-        TrophyRoom = new Room("in the trophy room of Hogwarts");
-        Staircase = new Room("in the only Staircase in the world where the stairs are moving");
-        Basement = new Room("in the basement");
-        BasementPortrait =new Room("infront of the basement portrait");
-        SlytherinCommonRoom = new Room("in front of the portrait of the Slytherin common room. Only slytherins are allowed to enter");
-        PotionsClassRoom = new Room("in the class room for the subject Potions");
-        FirstFloor = new Room("in the first floor of the staircase");
-        FirstFloorHallway =new Room("in the hallway of the first floor");
-        HuffelpuffCommonRoom =new Room("infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter");
-        HerbalismClassRoom = new Room("in the class room for the subject herbalism");
-        SecondFloor = new Room("in the second floor of the staircase");
-        Libary = new Room("in the Libary of Hogwarts");
-        InnerCourtyard = new Room("in the inner courtyard");
-        TransformationClassRoom = new Room("in the class room for the subject transformation");
-        SmartWizardPortrait = new Room("infront of the Portrait of the smart wizard. You are allowed to go through this portrait");
-        ThirdFloor = new Room("in the third floor of the staircase");
-        ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!");
-        FourthFloor = new Room("in the fourth floor of the staircase");
-        FourthFloorHallway = new Room("in the hallway of the fourth floor");
-        DefenceAgainstTheDarkArts= new Room("in the class room for defence against the dark arts");
-        FifthFloor = new Room("in the fifth floor of the staircase");
-        FifthFloorHallway = new Room("in the hallway of the fifth floor");
-        RawenclawCommonRoom = new Room("infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter");
-        ProphesyClassRoom = new Room("in the class room for the subject probhesy");
-        SixthFloor = new Room("in the sixth floor of the staircase");
-        DumbeldorsOffice = new Room("in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
-        SixthFloorHallway =new Room("in the hallway of the sixth floor");
-        SeventhFloor = new Room("in the seventh floor of the staircase");
-        GryffindorCommonRoom = new Room("infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter");
+        Bellcourt = new Room("in the courtyard infront of the bell tower" , 0);
+        QuidditchStadium = new Room("in the Quidditch stadium" , 0);
+        TrainingField = new Room("on the training field where Madam Hooch helds her courses" , 1);
+        GreatHall = new Room("in the great hall" , 0);
+        TrophyRoom = new Room("in the trophy room of Hogwarts" ,0);
+        Staircase = new Room("in the only Staircase in the world where the stairs are moving" , 0);
+        Basement = new Room("in the basement" , 0);
+        BasementPortrait =new Room("infront of the basement portrait" , 0);
+        SlytherinCommonRoom = new Room("infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter" , 0);
+        PotionsClassRoom = new Room("in the class room for the subject Potions" , 1);
+        FirstFloor = new Room("in the first floor of the staircase" , 0);
+        FirstFloorHallway =new Room("in the hallway of the first floor" , 0);
+        HuffelpuffCommonRoom =new Room("infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter" , 0);
+        HerbalismClassRoom = new Room("in the class room for the subject herbalism" , 1);
+        SecondFloor = new Room("in the second floor of the staircase" , 0);
+        Libary = new Room("in the Libary of Hogwarts" , 1);
+        InnerCourtyard = new Room("in the inner courtyard" , 0);
+        TransformationClassRoom = new Room("in the class room for the subject transformation" , 1);
+        SmartWizardPortrait = new Room("infront of the Portrait of the smart wizard. You are allowed to go through this portrait" , 0);
+        ThirdFloor = new Room("in the third floor of the staircase" , 0);
+        ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!" , 0);
+        FourthFloor = new Room("in the fourth floor of the staircase" , 0);
+        FourthFloorHallway = new Room("in the hallway of the fourth floor" , 0);
+        DefenceAgainstTheDarkArts= new Room("in the class room for defence against the dark arts" , 1);
+        FifthFloor = new Room("in the fifth floor of the staircase" , 0);
+        FifthFloorHallway = new Room("in the hallway of the fifth floor" , 0);
+        RawenclawCommonRoom = new Room("infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter" , 0);
+        ProphesyClassRoom = new Room("in the class room for the subject probhesy" , 1);
+        SixthFloor = new Room("in the sixth floor of the staircase" , 0);
+        DumbeldorsOffice = new Room("in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!" , 0);
+        SixthFloorHallway =new Room("in the hallway of the sixth floor" , 0);
+        SeventhFloor = new Room("in the seventh floor of the staircase" , 0);
+        GryffindorCommonRoom = new Room("infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter" , 0);
 
 
         // initialise room exits
@@ -175,8 +175,7 @@ class Game {
     
 
     public void learn(int count){
-        if (currentRoom == PotionsClassRoom)
-        setLearn(1);
+        
        
 
     }
@@ -204,6 +203,7 @@ class Game {
         "The other first years got thier breifing. If you dont have it, you need to find the sorting hat to get your briefing and to get sorted in one of the four houses.");
         System.out.println("Type 'help' if you need help for that.");
         System.out.println();
+        System.out.println("you are in the courtyard infront of the belltower");
         System.out.println( roomInfo() );
 
     }
@@ -255,12 +255,11 @@ class Game {
      * command words.
      */
     private void printHelp() {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You need to find the Sorting Hat! you might need to learn new skills to find it");
         System.out.println("learning progress " + player.getLearn());
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   go quit help learn");
     }
 
     /**
@@ -283,6 +282,10 @@ class Game {
             System.out.println("There is no door!");
         else {
             currentRoom = nextRoom;
+            if(currentRoom.getWasVisited == false){
+                player.setLearn(currentRoom.getLearningeffect());
+                System.out.println(currentRoom.getLearningeffect());
+            }
             System.out.println("you are " +  currentRoom.getDescription());
             System.out.println (roomInfo());
         }
