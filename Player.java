@@ -10,9 +10,9 @@ class Player {
     public int getLearn() {
         return this.learn;
     }
+
     public void setLearn(int count){
     this.learn += count;
-
     }
 
     public int getHealth() {

@@ -39,41 +39,53 @@ class Game {
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        Room Bellcourt, HagridsHut, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait, SlytherinCommonRoom, PotionsClassRoom,
-                FirstFloor, FirstFloorHallway, HerbalismClassRoom, SecondFloor, Libary, InnerCourtyard,
-                TransformationClassRoom, SmartWizardPortrait, ThirdFloor, FourthFloor,DefenceAgainstTheDarkArts, FifthFloor, SixthFloor, SixthFloorHallway, SeventhFloor;
+        Room Bellcourt, QuidditchStadium, TrainingField, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait, SlytherinCommonRoom, PotionsClassRoom,
+            FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary, InnerCourtyard, TransformationClassRoom, 
+            SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FourthFloor, FourthFloorHallway, DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway , ProphesyClassRoom ,
+            RawenclawCommonRoom, SixthFloor,  DumbeldorsOffice, SixthFloorHallway, SeventhFloor, GryffindorCommonRoom;
         // create the rooms
         Bellcourt = new Room("in the courtyard in front of the bell tower");
-        HagridsHut = new Room("in front of Hagrids hut");
+        QuidditchStadium = new Room("in the Quidditch stadium");
+        TrainingField = new Room("on the training field where Madam Hooch helds her courses");
         GreatHall = new Room("in the great hall");
         TrophyRoom = new Room("in the trophy room of Hogwarts");
         Staircase = new Room("in the only Staircase in the world where the stairs are moving");
         Basement = new Room("in the basement");
         BasementPortrait =new Room("infront of the basement portrait");
-        SlytherinCommonRoom = new Room("in front of the Slytherin common room. You need a password to enter");
+        SlytherinCommonRoom = new Room("in front of the portrait of the Slytherin common room. Only slytherins are allowed to enter");
         PotionsClassRoom = new Room("in the class room for the subject Potions");
         FirstFloor = new Room("in the first floor of the staircase");
         FirstFloorHallway =new Room("in the hallway of the first floor");
-        HerbalismClassRoom = new Room("in the class room for herbalism");
+        HuffelpuffCommonRoom =new Room("infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter");
+        HerbalismClassRoom = new Room("in the class room for the subject herbalism");
         SecondFloor = new Room("in the second floor of the staircase");
         Libary = new Room("in the Libary of Hogwarts");
         InnerCourtyard = new Room("in the inner courtyard");
         TransformationClassRoom = new Room("in the class room for the subject transformation");
         SmartWizardPortrait = new Room("infront of the Portrait of the smart wizard. You are allowed to go through this portrait");
         ThirdFloor = new Room("in the third floor of the staircase");
+        ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!");
         FourthFloor = new Room("in the fourth floor of the staircase");
+        FourthFloorHallway = new Room("in the hallway of the fourth floor");
         DefenceAgainstTheDarkArts= new Room("in the class room for defence against the dark arts");
         FifthFloor = new Room("in the fifth floor of the staircase");
+        FifthFloorHallway = new Room("in the hallway of the fifth floor");
+        RawenclawCommonRoom = new Room("infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter");
+        ProphesyClassRoom = new Room("in the class room for the subject probhesy");
         SixthFloor = new Room("in the sixth floor of the staircase");
+        DumbeldorsOffice = new Room("in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
         SixthFloorHallway =new Room("in the hallway of the sixth floor");
         SeventhFloor = new Room("in the seventh floor of the staircase");
+        GryffindorCommonRoom = new Room("infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter");
 
 
         // initialise room exits
         // outside
         Bellcourt.setExit("north" , GreatHall);
-        Bellcourt.setExit("south" , HagridsHut);
-        HagridsHut.setExit("north" , HagridsHut );
+        Bellcourt.setExit("south" , QuidditchStadium);
+        QuidditchStadium.setExit("north" , Bellcourt);
+        QuidditchStadium.setExit("south" , TrainingField);
+        TrainingField.setExit("north" , QuidditchStadium);
 
         // inside
         GreatHall.setExit("north" , TrophyRoom);
@@ -100,6 +112,8 @@ class Game {
         FirstFloor.setExit("north" , FirstFloorHallway);
         FirstFloorHallway.setExit("south" , FirstFloor);
         FirstFloorHallway.setExit("east" , HerbalismClassRoom);
+        FirstFloorHallway.setExit("north" , HuffelpuffCommonRoom);
+        HuffelpuffCommonRoom.setExit("south" , FirstFloorHallway);
         HerbalismClassRoom.setExit("west" , FirstFloorHallway);
 
 
@@ -119,25 +133,38 @@ class Game {
         // third floor
         ThirdFloor.setExit("up" , FourthFloor);
         ThirdFloor.setExit("down" , SecondFloor);
+        ThirdFloor.setExit("north" , ThirdFloorHallway);
+        ThirdFloorHallway.setExit("south" , ThirdFloor);
 
         // fourth floor
         FourthFloor.setExit("up" , FifthFloor);
         FourthFloor.setExit("down" ,  ThirdFloor);
-        FourthFloor.setExit("north" , DefenceAgainstTheDarkArts);
-        DefenceAgainstTheDarkArts.setExit( "south" , FourthFloor);
+        FourthFloor.setExit("north" , FourthFloorHallway);
+        FourthFloorHallway.setExit("south" , FourthFloor);
+        FourthFloorHallway.setExit("west" , DefenceAgainstTheDarkArts);
+        DefenceAgainstTheDarkArts.setExit( "east" , FourthFloorHallway);
 
         // fifth floor
         FifthFloor.setExit("up" , SixthFloor);
         FifthFloor.setExit("down" , FourthFloor);
+        FifthFloor.setExit("north" , FifthFloorHallway);
+        FifthFloorHallway.setExit("south" , FifthFloor);
+        FifthFloorHallway.setExit("west" , RawenclawCommonRoom);
+        FifthFloorHallway.setExit("up" , ProphesyClassRoom);
+        RawenclawCommonRoom.setExit("east" , FifthFloorHallway);
+        ProphesyClassRoom.setExit("down" , FifthFloorHallway);
 
         // sixth floor
         SixthFloor.setExit("up" , SeventhFloor);
         SixthFloor.setExit("down" , FifthFloor);
         SixthFloor.setExit("north" , SixthFloorHallway);
         SixthFloorHallway.setExit("south" , SixthFloor);
+        SixthFloorHallway.setExit("east" , DumbeldorsOffice);
 
         // seventh floor
         SeventhFloor.setExit("down" , SixthFloor);
+        SeventhFloor.setExit("north" , GryffindorCommonRoom);
+        GryffindorCommonRoom.setExit("south" , SeventhFloor);
 
         currentRoom = Bellcourt; // start game outside
     }
@@ -147,7 +174,7 @@ class Game {
      */
 
     public void learn(){
-       player.setLearn(2);
+       player.setLearn(0);
 
     }
     public void play() {
@@ -169,9 +196,9 @@ class Game {
      */
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to Hogwarts");
+        System.out.println("Welcome to Hogwarts, Henry Potter!");
         System.out.println(
-                "The other first years got thier breifing. If you dont have it, you need to find your way on your own");
+        "The other first years got thier breifing. If you dont have it, you need to find the sorting hat to get your briefing and to get sorted in one of the four houses.");
         System.out.println("Type 'help' if you need help for that.");
         System.out.println();
         System.out.println( roomInfo() );
@@ -213,8 +240,7 @@ class Game {
         else if (commandWord.equals("go"))
             goRoom(command);
         else if (commandWord.equals("quit"))
-            wantToQuit = quit(command);
-
+            wantToQuit = quit(command); 
         return wantToQuit;
     }
 
