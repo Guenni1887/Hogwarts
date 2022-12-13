@@ -1,6 +1,5 @@
 import java.util.HashMap;
-import java.util.Map;
-import javafx.scene.effect.Effect;
+
 
 /*
  * Class Room - a room in an adventure game.
@@ -53,6 +52,10 @@ class Room {
     public boolean requiredLearningPoints(int points){
         if (learningEffect >= points) return true;
         else return false;
+    }
+
+    public int getRequiredLearningPoints(){
+      return this.requiredLearningPoints;
     }
 
     /**

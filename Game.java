@@ -73,7 +73,7 @@ class Game {
         RawenclawCommonRoom = new Room("infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter" , 0 , 0);
         ProphesyClassRoom = new Room("in the class room for the subject probhesy" , 1 , 0);
         SixthFloor = new Room("in the sixth floor of the staircase" , 0 , 0);
-        DumbeldorsOffice = new Room("in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!" , 0 , 5);
+        DumbeldorsOffice = new Room("in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!" , 0 , 4);
         SixthFloorHallway =new Room("in the hallway of the sixth floor" , 0 , 0);
         SeventhFloor = new Room("in the seventh floor of the staircase" , 0 , 0);
         GryffindorCommonRoom = new Room("infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter" , 0 , 0);
@@ -271,7 +271,7 @@ class Game {
         }
         else
         {
-            System.out.println("Sie dürfen nur einmal pro Raum lernen!");
+            System.out.println("You alredy learned in this room!");
 
         }
     }
@@ -292,16 +292,50 @@ class Game {
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null)
+        
+
+         if (nextRoom == null)
+         {
             System.out.println("There is no door!");
-            else if (nextRoom == (requiredLearningPoints == false))
+         }
+
+           
+           
+        else if (player.getLearn() < nextRoom.getRequiredLearningPoints())
+        {
             System.out.println("You are not smart enough to enter this room. You need to learn more");
-        else {
+            
+        }
+        else
+         {
             currentRoom = nextRoom;
+         
+
+            
            
             System.out.println("you are " +  currentRoom.getDescription());
             System.out.println (roomInfo());
+            System.out.println();
         }
+    }
+    public void learnCommand(){
+        
+    if (currentRoom.getHasLearned() == true){
+        System.out.println("You alredy learned in this room!");
+    }
+
+    else if
+    (player.getLearn() > currentRoom.getRequiredLearningPoints() && currentRoom.getHasLearned() == false)
+
+   
+        {
+            player.setLearn(currentRoom.getLearningeffect());
+            System.out.println("Added "  + currentRoom.getLearningeffect() + " learning points");
+            System.out.println("your learning level: " + player.getLearn() + " points");
+            currentRoom.setHasLearned();
+        }
+
+       
     }
 
     /**
