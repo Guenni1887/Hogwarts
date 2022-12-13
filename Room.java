@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.scene.effect.Effect;
 
 /*
@@ -22,29 +21,38 @@ class Room {
     private String description;
     private HashMap<String, Room> exits;
     private int learningEffect;
-    private boolean wasVisited;
+    private boolean hasLearned;
+    private int requiredLearningPoints;
 
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      */
-    public Room(String description , int effect) {
+    public Room(String description, int effect, int points) {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.learningEffect = effect;
-        this.wasVisited = false;
+        this.requiredLearningPoints = points;
+        this.hasLearned = false;
     }
 
-    public int getLearningeffect(){
-        if (effect == 1)
-        learningEffect += 1;
+    public int getLearningeffect() {
+        return (learningEffect);
+
     }
 
-    public boolean getWasVisited(){
-        if (wasVisited == true);
-        return ;
+    public void setHasLearned() {
+        hasLearned = true;
+    }
 
+    public boolean getHasLearned() {
+        return (hasLearned);
+    }
+
+    public boolean requiredLearningPoints(int points){
+        if (learningEffect >= points) return true;
+        else return false;
     }
 
     /**
@@ -55,7 +63,6 @@ class Room {
         exits.put(direction, nextRoom);
     }
 
-   
     public String getExitsasString() {
         String exitsString = "exits: ";
 
@@ -73,8 +80,6 @@ class Room {
     public String getDescription() {
         return description;
     }
-
-    
 
     public Room getExit(String direction) {
         return (Room) exits.get(direction);
