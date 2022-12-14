@@ -26,6 +26,15 @@ class Game {
     private Room currentRoom;
     private Player player;
 
+    private Room Bellcourt, QuidditchStadium, TrainingField, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait,
+                SlytherinCommonRoom, PotionsClassRoom,
+                FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary,
+                InnerCourtyard, TransformationClassRoom,
+                SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FourthFloor, FourthFloorHallway,
+                DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway, ProphesyClassRoom,
+                RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
+                GryffindorCommonRoom;
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -39,14 +48,7 @@ class Game {
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        Room Bellcourt, QuidditchStadium, TrainingField, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait,
-                SlytherinCommonRoom, PotionsClassRoom,
-                FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary,
-                InnerCourtyard, TransformationClassRoom,
-                SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FourthFloor, FourthFloorHallway,
-                DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway, ProphesyClassRoom,
-                RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
-                GryffindorCommonRoom;
+        
         // create the rooms
         Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0);
         QuidditchStadium = new Room("in the Quidditch stadium", 0, 0);
