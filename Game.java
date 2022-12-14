@@ -85,7 +85,7 @@ class Game {
         ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0);
         SixthFloor = new Room("in the sixth floor of the staircase", 0, 0);
         DumbeldorsOffice = new Room(
-                "in Dubeldore`s office. The Sorting Hat will give you your briefing. Congratulations, you won the Game!",
+                "in Dubeldore`s office",
                 0, 4);
         SixthFloorHallway = new Room("in the hallway of the sixth floor", 0, 0);
         SeventhFloor = new Room("in the seventh floor of the staircase", 0, 0);
@@ -252,6 +252,12 @@ class Game {
             learn();
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
+
+        if (currentRoom == DumbeldorsOffice) {
+            System.out.println("The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
+            return true;
+        }
+    
         return wantToQuit;
     }
 
