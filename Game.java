@@ -11,8 +11,8 @@
  * rooms, creates the parser and starts the game. It also evaluates and
  * executes the commands that the parser returns.
  * 
- * @author Michael Kolling and David J. Barnes
- * @version 1.0 (February 2002)
+ * @author Finn Unger
+ * @version 1.0 (October 2022)
  */
 
 class Game {
@@ -30,10 +30,12 @@ class Game {
                 SlytherinCommonRoom, PotionsClassRoom,
                 FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary,
                 InnerCourtyard, TransformationClassRoom,
-                SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FourthFloor, FourthFloorHallway,
+                SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FluffysRoom, FourthFloor, FourthFloorHallway,
                 DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway, ProphesyClassRoom,
                 RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
                 GryffindorCommonRoom;
+            
+     private Book herbalismBook; 
 
     /**
      * Create the game and initialise its internal map.
@@ -42,6 +44,9 @@ class Game {
         createRooms();
         parser = new Parser();
         player = new Player(10);
+    }
+    private void createItems(){
+        herbalismBook = new Book ("herbalism lexica" , "herbalism");
     }
 
     /**
@@ -75,18 +80,17 @@ class Game {
         ThirdFloor = new Room("in the third floor of the staircase", 0, 0);
         ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!",
                 0, 0);
+        FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!" , 0 , 0);
         FourthFloor = new Room("in the fourth floor of the staircase", 0, 0);
         FourthFloorHallway = new Room("in the hallway of the fourth floor", 0, 0);
-        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 0);
+        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2);
         FifthFloor = new Room("in the fifth floor of the staircase", 0, 0);
         FifthFloorHallway = new Room("in the hallway of the fifth floor", 0, 0);
         RawenclawCommonRoom = new Room(
                 "infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter", 0, 0);
         ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0);
         SixthFloor = new Room("in the sixth floor of the staircase", 0, 0);
-        DumbeldorsOffice = new Room(
-                "in Dubeldore`s office",
-                0, 4);
+        DumbeldorsOffice = new Room("in Dubeldore`s office", 0, 4);
         SixthFloorHallway = new Room("in the hallway of the sixth floor", 0, 0);
         SeventhFloor = new Room("in the seventh floor of the staircase", 0, 0);
         GryffindorCommonRoom = new Room(
@@ -138,8 +142,10 @@ class Game {
         SmartWizardPortrait.setExit("south", SecondFloor);
         SmartWizardPortrait.setExit("through", Bellcourt);
         Libary.setExit("east", SecondFloor);
+        Libary.setExit("south" , InnerCourtyard);
         InnerCourtyard.setExit("east", TransformationClassRoom);
         InnerCourtyard.setExit("west", SecondFloor);
+        InnerCourtyard.setExit("north" , Libary);
         TransformationClassRoom.setExit("west", InnerCourtyard);
 
         // third floor
@@ -147,6 +153,7 @@ class Game {
         ThirdFloor.setExit("down", SecondFloor);
         ThirdFloor.setExit("north", ThirdFloorHallway);
         ThirdFloorHallway.setExit("south", ThirdFloor);
+        ThirdFloorHallway.setExit("north" , FluffysRoom);
 
         // fourth floor
         FourthFloor.setExit("up", FifthFloor);
@@ -257,7 +264,12 @@ class Game {
             System.out.println("The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
             return true;
         }
-    
+        
+            if (currentRoom == FluffysRoom){
+        System.out.println("Fluffy the three headed dog killed you. You lost the Game.");
+        return true;    
+    }
+        
         return wantToQuit;
     }
 
@@ -346,6 +358,7 @@ class Game {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
+        
         } else
             return true; // signal that we want to quit
     }

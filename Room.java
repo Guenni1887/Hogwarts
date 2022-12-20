@@ -1,5 +1,6 @@
 import java.util.HashMap;
-
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Class Room - a room in an adventure game.
@@ -22,6 +23,7 @@ class Room {
     private int learningEffect;
     private boolean hasLearned;
     private int requiredLearningPoints;
+    private List<Item> items;
 
     /**
      * Create a room described "description". Initially, it has
@@ -49,13 +51,15 @@ class Room {
         return (hasLearned);
     }
 
-    public boolean requiredLearningPoints(int points){
-        if (learningEffect >= points) return true;
-        else return false;
+    public boolean requiredLearningPoints(int points) {
+        if (learningEffect >= points)
+            return true;
+        else
+            return false;
     }
 
-    public int getRequiredLearningPoints(){
-      return this.requiredLearningPoints;
+    public int getRequiredLearningPoints() {
+        return this.requiredLearningPoints;
     }
 
     /**
@@ -86,6 +90,9 @@ class Room {
 
     public Room getExit(String direction) {
         return (Room) exits.get(direction);
+    }
+    public void setItems(Item i){
+        items.add(i);
     }
 
 }
