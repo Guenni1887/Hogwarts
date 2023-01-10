@@ -35,19 +35,37 @@ class Game {
                 RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
                 GryffindorCommonRoom;
             
-     private Book herbalismBook; 
+     private Book herbalismBook, potionsBook , transformationsBook , defenceAigainstTheDarkArtsBook;
+     private MagicalItem broom; 
 
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
         createRooms();
+        createItems();
         parser = new Parser();
         player = new Player(10);
     }
     private void createItems(){
         herbalismBook = new Book ("herbalism lexica" , "herbalism");
+        potionsBook = new Book ("book of the half-blood-prince" , "potions");
+        transformationsBook = new Book ("first year transformatoins" , "transfromation");
+        defenceAigainstTheDarkArtsBook = new Book ("book for useful curses" , "defenceAiganstTheDarkArts");
+
+        broom = new MagicalItem("Nimbus 2000");
+
+        HerbalismClassRoom.setItems(herbalismBook);
+        PotionsClassRoom.setItems(potionsBook);
+        TransformationClassRoom.setItems(transformationsBook);
+        DefenceAgainstTheDarkArts.setItems(defenceAigainstTheDarkArtsBook);
+
+        GreatHall.setItems(broom);
+
+
     }
+
+    
 
     /**
      * Create all the rooms and link their exits together.

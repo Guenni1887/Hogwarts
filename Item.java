@@ -22,3 +22,12 @@ class Book extends Item {
 
     
 }
+
+class MagicalItem extends Item{
+   
+    public MagicalItem (String nameParameter){
+        super (nameParameter);
+    }
+
+
+}
