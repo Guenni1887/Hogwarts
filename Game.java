@@ -26,17 +26,18 @@ class Game {
     private Room currentRoom;
     private Player player;
 
-    private Room Bellcourt, QuidditchStadium, TrainingField, GreatHall, TrophyRoom, Staircase, Basement, BasementPortrait,
-                SlytherinCommonRoom, PotionsClassRoom,
-                FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary,
-                InnerCourtyard, TransformationClassRoom,
-                SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FluffysRoom, FourthFloor, FourthFloorHallway,
-                DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway, ProphesyClassRoom,
-                RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
-                GryffindorCommonRoom;
-            
-     private Book herbalismBook, potionsBook , transformationsBook , defenceAigainstTheDarkArtsBook;
-     private MagicalItem broom, wand, sleepingPotion; 
+    private Room Bellcourt, QuidditchStadium, TrainingField, GreatHall, TrophyRoom, Staircase, Basement,
+            BasementPortrait,
+            SlytherinCommonRoom, PotionsClassRoom,
+            FirstFloor, FirstFloorHallway, HuffelpuffCommonRoom, HerbalismClassRoom, SecondFloor, Libary,
+            InnerCourtyard, TransformationClassRoom,
+            SmartWizardPortrait, ThirdFloor, ThirdFloorHallway, FluffysRoom, FourthFloor, FourthFloorHallway,
+            DefenceAgainstTheDarkArts, FifthFloor, FifthFloorHallway, ProphesyClassRoom,
+            RawenclawCommonRoom, SixthFloor, DumbeldorsOffice, SixthFloorHallway, SeventhFloor,
+            GryffindorCommonRoom;
+
+    private Book herbalismBook, potionsBook, transformationsBook, defenceAigainstTheDarkArtsBook;
+    private MagicalItem broom, wand, sleepingPotion;
 
     /**
      * Create the game and initialise its internal map.
@@ -47,38 +48,34 @@ class Game {
         parser = new Parser();
         player = new Player(10);
     }
-    private void createItems(){
-        herbalismBook = new Book ("herbalism lexica" , "herbalism");
-        potionsBook = new Book ("book of the half-blood-prince" , "potions");
-        transformationsBook = new Book ("first year transformatoins" , "transfromation");
-        defenceAigainstTheDarkArtsBook = new Book ("book for useful curses" , "defenceAiganstTheDarkArts");
+
+    private void createItems() {
+        herbalismBook = new Book("herbalism lexica", "herbalism");
+        potionsBook = new Book("book of the half-blood-prince", "potions");
+        transformationsBook = new Book("first year transformatoins", "transfromation");
+        defenceAigainstTheDarkArtsBook = new Book("book for useful curses", "defenceAiganstTheDarkArts");
 
         broom = new MagicalItem("Nimbus 2000");
         wand = new MagicalItem("your Wand");
         sleepingPotion = new MagicalItem("sleeping potion");
-        
-        //where the items are:
+
+        // where the items are:
 
         Libary.setItems(herbalismBook);
         Libary.setItems(potionsBook);
         Libary.setItems(transformationsBook);
         Libary.setItems(defenceAigainstTheDarkArtsBook);
-        
+
         GreatHall.setItems(broom);
         Bellcourt.setItems(wand);
         PotionsClassRoom.setItems(sleepingPotion);
-
-
-
     }
-
-    
 
     /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        
+
         // create the rooms
         Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0);
         QuidditchStadium = new Room("in the Quidditch stadium", 0, 0);
@@ -105,7 +102,7 @@ class Game {
         ThirdFloor = new Room("in the third floor of the staircase", 0, 0);
         ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!",
                 0, 0);
-        FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!" , 0 , 0);
+        FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!", 0, 0);
         FourthFloor = new Room("in the fourth floor of the staircase", 0, 0);
         FourthFloorHallway = new Room("in the hallway of the fourth floor", 0, 0);
         DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2);
@@ -167,10 +164,10 @@ class Game {
         SmartWizardPortrait.setExit("south", SecondFloor);
         SmartWizardPortrait.setExit("through", Bellcourt);
         Libary.setExit("east", SecondFloor);
-        Libary.setExit("south" , InnerCourtyard);
+        Libary.setExit("south", InnerCourtyard);
         InnerCourtyard.setExit("east", TransformationClassRoom);
         InnerCourtyard.setExit("west", SecondFloor);
-        InnerCourtyard.setExit("north" , Libary);
+        InnerCourtyard.setExit("north", Libary);
         TransformationClassRoom.setExit("west", InnerCourtyard);
 
         // third floor
@@ -178,7 +175,7 @@ class Game {
         ThirdFloor.setExit("down", SecondFloor);
         ThirdFloor.setExit("north", ThirdFloorHallway);
         ThirdFloorHallway.setExit("south", ThirdFloor);
-        ThirdFloorHallway.setExit("north" , FluffysRoom);
+        ThirdFloorHallway.setExit("north", FluffysRoom);
 
         // fourth floor
         FourthFloor.setExit("up", FifthFloor);
@@ -261,9 +258,11 @@ class Game {
          */
         return currentRoom.getExitsasString();
     }
-    private void umsehen(){
-    System.out.println(currentRoom.getDescription());
+
+    private void umsehen() {
+        System.out.println(currentRoom.getDescription());
     }
+
     /**
      * Given a command, process (that is: execute) the command.
      * If this command ends the game, true is returned, otherwise false is
@@ -293,12 +292,12 @@ class Game {
             System.out.println("The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
             return true;
         }
-        
-            if (currentRoom == FluffysRoom){
-        System.out.println("Fluffy the three headed dog killed you. You lost the Game.");
-        return true;    
-    }
-        
+
+        if (currentRoom == FluffysRoom) {
+            System.out.println("Fluffy the three headed dog killed you. You lost the Game.");
+            return true;
+        }
+
         return wantToQuit;
     }
 
@@ -314,7 +313,7 @@ class Game {
         System.out.println("learning progress " + player.getLearn());
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help learn");
+        System.out.println("   go quit help learn look");
     }
 
     private void learn() {
@@ -387,7 +386,7 @@ class Game {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        
+
         } else
             return true; // signal that we want to quit
     }
