@@ -36,7 +36,7 @@ class Game {
                 GryffindorCommonRoom;
             
      private Book herbalismBook, potionsBook , transformationsBook , defenceAigainstTheDarkArtsBook;
-     private MagicalItem broom; 
+     private MagicalItem broom, wand, sleepingPotion; 
 
     /**
      * Create the game and initialise its internal map.
@@ -54,13 +54,20 @@ class Game {
         defenceAigainstTheDarkArtsBook = new Book ("book for useful curses" , "defenceAiganstTheDarkArts");
 
         broom = new MagicalItem("Nimbus 2000");
+        wand = new MagicalItem("your Wand");
+        sleepingPotion = new MagicalItem("sleeping potion");
+        
+        //where the items are:
 
-        HerbalismClassRoom.setItems(herbalismBook);
-        PotionsClassRoom.setItems(potionsBook);
-        TransformationClassRoom.setItems(transformationsBook);
-        DefenceAgainstTheDarkArts.setItems(defenceAigainstTheDarkArtsBook);
-
+        Libary.setItems(herbalismBook);
+        Libary.setItems(potionsBook);
+        Libary.setItems(transformationsBook);
+        Libary.setItems(defenceAigainstTheDarkArtsBook);
+        
         GreatHall.setItems(broom);
+        Bellcourt.setItems(wand);
+        PotionsClassRoom.setItems(sleepingPotion);
+
 
 
     }
@@ -254,7 +261,9 @@ class Game {
          */
         return currentRoom.getExitsasString();
     }
-
+    private void umsehen(){
+    System.out.println(currentRoom.getDescription());
+    }
     /**
      * Given a command, process (that is: execute) the command.
      * If this command ends the game, true is returned, otherwise false is
@@ -275,6 +284,8 @@ class Game {
             goRoom(command);
         else if (commandWord.equals("learn"))
             learn();
+        else if (commandWord.equals("look"))
+            umsehen();
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
 
