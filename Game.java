@@ -284,7 +284,7 @@ class Game {
         else if (commandWord.equals("learn"))
             learn();
         else if (commandWord.equals("look"))
-            umsehen();
+            look();
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
 
@@ -327,6 +327,21 @@ class Game {
 
         }
     }
+
+    private boolean look(Command command){
+      if (command.hasSecondWord()){
+        System.out.println("look what?");
+        return false;
+      }
+      else return true;
+      }
+
+    private void doLook (look){
+        if (look == true) return roomInfo();
+    }
+      
+
+    
 
     /**
      * Try to go to one direction. If there is an exit, enter

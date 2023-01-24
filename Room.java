@@ -36,6 +36,7 @@ class Room {
         this.learningEffect = effect;
         this.requiredLearningPoints = points;
         this.hasLearned = false;
+        this.items = new ArrayList<Item>();
     }
 
     public int getLearningeffect() {
