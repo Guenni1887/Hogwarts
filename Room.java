@@ -24,6 +24,7 @@ class Room {
     private boolean hasLearned;
     private int requiredLearningPoints;
     private List<Item> items;
+     
 
     /**
      * Create a room described "description". Initially, it has
@@ -92,8 +93,20 @@ class Room {
     public Room getExit(String direction) {
         return (Room) exits.get(direction);
     }
+    public void removeItems(Item i){
+          items.remove(i);
+    }
+
     public void setItems(Item i){
         items.add(i);
+    }
+    public String getItems(){
+       String rueckgabe = "";       
+       for (Item i : this.items){
+        rueckgabe += " | "+ i.getName();
+       }
+       rueckgabe += " | ";
+       return rueckgabe;
     }
 
 }

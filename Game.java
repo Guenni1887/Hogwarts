@@ -50,14 +50,14 @@ class Game {
     }
 
     private void createItems() {
-        herbalismBook = new Book("herbalism lexica", "herbalism");
-        potionsBook = new Book("book of the half-blood-prince", "potions");
-        transformationsBook = new Book("first year transformatoins", "transfromation");
-        defenceAigainstTheDarkArtsBook = new Book("book for useful curses", "defenceAiganstTheDarkArts");
+        herbalismBook = new Book("herbalism lexica", "herbalism" , 2);
+        potionsBook = new Book("book of the half-blood-prince", "potions" , 2);
+        transformationsBook = new Book("first year transformatoins", "transfromation" , 2);
+        defenceAigainstTheDarkArtsBook = new Book("useful curses for beginners", "defenceAiganstTheDarkArts" , 2);
 
-        broom = new MagicalItem("Nimbus 2000");
-        wand = new MagicalItem("your Wand");
-        sleepingPotion = new MagicalItem("sleeping potion");
+        broom = new MagicalItem("Nimbus 2000" , 4);
+        wand = new MagicalItem("your Wand" , 1);
+        sleepingPotion = new MagicalItem("sleeping potion" , 4);
 
         // where the items are:
 
@@ -285,8 +285,13 @@ class Game {
             learn();
         else if (commandWord.equals("look"))
             look();
+        else if (commandWord.equals("pick"))
+           pick();
+        else if (commandWord.equals("drop"))
+           drop();
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
+         
 
         if (currentRoom == DumbeldorsOffice) {
             System.out.println("The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
@@ -328,20 +333,19 @@ class Game {
         }
     }
 
-    private boolean look(Command command){
-      if (command.hasSecondWord()){
-        System.out.println("look what?");
-        return false;
-      }
-      else return true;
-      }
-
-    private void doLook (look){
-        if (look == true) return roomInfo();
+    private void look(){
+        
+        System.out.println("the room contains following Items:" + currentRoom.getItems());
+        System.out.println("your inventory contains following Items:" + player.getItems());
     }
-      
 
-    
+    private void pick(){
+       if (addItems)
+    }
+
+    private void drop(){
+
+    }
 
     /**
      * Try to go to one direction. If there is an exit, enter

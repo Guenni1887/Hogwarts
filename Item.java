@@ -1,19 +1,25 @@
 class Item {
     private String name;
+    private int gewicht;
 
-    public Item(String nameParameter) {
+    public Item(String nameParameter, int gewichtParameter) {
         this.name = nameParameter;
+        this.gewicht = gewichtParameter;
     }
     public String getName(){
         return this.name;
+    }
+
+    public int getGewicht(){
+        return this.gewicht;
     }
 }
 
 class Book extends Item {
     private String topic;
 
-    public Book(String nameParameter , String topicParameter) {
-        super(nameParameter);
+    public Book(String nameParameter , String topicParameter , int gewichtParameter) {
+        super(nameParameter , gewichtParameter);
         this.topic = topicParameter;
     }
     public String getTopic(){
@@ -25,9 +31,8 @@ class Book extends Item {
 
 class MagicalItem extends Item{
    
-    public MagicalItem (String nameParameter){
-        super (nameParameter);
+    public MagicalItem (String nameParameter , int gewichtParameter){
+        super (nameParameter , gewichtParameter);
     }
-
-
+  
 }
