@@ -26,8 +26,12 @@ class Player {
         return this.health;
     }
 
-    public void removeItems(Item i) {
-        this.inventory.remove(i);
+    public boolean removeItems(Item i) {
+        return this.inventory.remove(i);
+    }
+
+    public List<Item> getInventoryList(){
+        return this.inventory;
     }
 
     public boolean addItems(Item i) {

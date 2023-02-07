@@ -1,3 +1,5 @@
+import com.azul.crs.client.Inventory;
+
 /**
  * This class is the main class of the "World of Zuul" application.
  * "World of Zuul" is a very simple, text based adventure game. Users
@@ -50,14 +52,14 @@ class Game {
     }
 
     private void createItems() {
-        herbalismBook = new Book("herbalism lexica", "herbalism" , 2);
-        potionsBook = new Book("book of the half-blood-prince", "potions" , 2);
-        transformationsBook = new Book("first year transformatoins", "transfromation" , 2);
-        defenceAigainstTheDarkArtsBook = new Book("useful curses for beginners", "defenceAiganstTheDarkArts" , 2);
+        herbalismBook = new Book("herbalism_lexica", "herbalism" , 2);
+        potionsBook = new Book("book_of_the_half-blood-prince", "potions" , 2);
+        transformationsBook = new Book("first_year_transformatoins", "transfromation" , 2);
+        defenceAigainstTheDarkArtsBook = new Book("useful_curses_for_beginners", "defenceAiganstTheDarkArts" , 2);
 
-        broom = new MagicalItem("Nimbus 2000" , 4);
-        wand = new MagicalItem("your Wand" , 1);
-        sleepingPotion = new MagicalItem("sleeping potion" , 4);
+        broom = new MagicalItem("Nimbus_2000" , 4);
+        wand = new MagicalItem("your_Wand" , 1);
+        sleepingPotion = new MagicalItem("sleeping_potion" , 4);
 
         // where the items are:
 
@@ -259,10 +261,6 @@ class Game {
         return currentRoom.getExitsasString();
     }
 
-    private void umsehen() {
-        System.out.println(currentRoom.getDescription());
-    }
-
     /**
      * Given a command, process (that is: execute) the command.
      * If this command ends the game, true is returned, otherwise false is
@@ -286,9 +284,9 @@ class Game {
         else if (commandWord.equals("look"))
             look();
         else if (commandWord.equals("pick"))
-           pick();
+           pick(command);
         else if (commandWord.equals("drop"))
-           drop();
+           drop(command);
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
          
@@ -339,12 +337,36 @@ class Game {
         System.out.println("your inventory contains following Items:" + player.getItems());
     }
 
-    private void pick(){
-       if (addItems)
+    private void pick(Command command){
+        Item result = new Item("dummy_Item" , 0);
+       String itemtopick = command.getSecondWord();
+      for (Item i : currentRoom.getItemsList()){
+          if (i.getName() == itemtopick){
+            result = i;
+          }
+      
+      }
+
+       if (result.getName() != "dummy_Item"){
+       if (player.addItems(result)){
+        System.out.println ("successfully picked " + itemtopick);
+       }
+    }
     }
 
-    private void drop(){
-
+    private void drop(Command command){
+        Item dropItem = new Item ("dummy_Item_2" , 0);
+      String itemtodrop = command.getSecondWord();
+      for (Item i : player.getInventoryList()){
+        if (i.getName() == itemtodrop){
+            dropItem = i;
+        }
+      }
+      if (dropItem.getName() != "dummy_Item_2"){
+      if (player.removeItems(dropItem)){
+        System.out.println ("successfully droped " + itemtodrop);
+      }
+    }
     }
 
     /**

@@ -100,6 +100,10 @@ class Room {
     public void setItems(Item i){
         items.add(i);
     }
+
+    public List<Item> getItemsList(){
+     return this.items;
+    }
     public String getItems(){
        String rueckgabe = "";       
        for (Item i : this.items){
