@@ -1,4 +1,4 @@
-import com.azul.crs.client.Inventory;
+
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -331,6 +331,8 @@ class Game {
         }
     }
 
+    
+
     private void look(){
         
         System.out.println("the room contains following Items:" + currentRoom.getItems());
@@ -345,7 +347,7 @@ class Game {
             result = i;
           }
       
-      }
+    }
 
        if (result.getName() != "dummy_Item"){
        if (player.addItems(result)){
@@ -361,7 +363,8 @@ class Game {
         if (i.getName() == itemtodrop){
             dropItem = i;
         }
-      }
+       
+    }
       if (dropItem.getName() != "dummy_Item_2"){
       if (player.removeItems(dropItem)){
         System.out.println ("successfully droped " + itemtodrop);
