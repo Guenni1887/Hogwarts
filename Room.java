@@ -24,6 +24,7 @@ class Room {
     private boolean hasLearned;
     private int requiredLearningPoints;
     private List<Item> items;
+    private Item requiredLearningItem;
      
 
     /**
@@ -31,13 +32,14 @@ class Room {
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      */
-    public Room(String description, int effect, int points) {
+    public Room(String description, int effect, int points , Item requiredItem) {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.learningEffect = effect;
         this.requiredLearningPoints = points;
         this.hasLearned = false;
         this.items = new ArrayList<Item>();
+        this.requiredLearningItem = requiredItem;
     }
 
     public int getLearningeffect() {
@@ -48,6 +50,15 @@ class Room {
     public void setHasLearned() {
         hasLearned = true;
     }
+
+    public Item getRequiredLearningItem() {
+        return this.requiredLearningItem;
+
+    }
+
+
+
+   
 
     public boolean getHasLearned() {
         return (hasLearned);

@@ -1,5 +1,4 @@
 
-
 /**
  * This class is the main class of the "World of Zuul" application.
  * "World of Zuul" is a very simple, text based adventure game. Users
@@ -52,14 +51,14 @@ class Game {
     }
 
     private void createItems() {
-        herbalismBook = new Book("herbalism_lexica", "herbalism" , 2);
-        potionsBook = new Book("book_of_the_half-blood-prince", "potions" , 2);
-        transformationsBook = new Book("first_year_transformatoins", "transfromation" , 2);
-        defenceAigainstTheDarkArtsBook = new Book("useful_curses_for_beginners", "defenceAiganstTheDarkArts" , 2);
+        herbalismBook = new Book("herbalism lexica", "herbalism", 2);
+        potionsBook = new Book("book of the half-blood-prince", "potions", 2);
+        transformationsBook = new Book("first year transformatoins", "transfromation", 2);
+        defenceAigainstTheDarkArtsBook = new Book("useful curses for beginners", "defenceAiganstTheDarkArts", 2);
 
-        broom = new MagicalItem("Nimbus_2000" , 4);
-        wand = new MagicalItem("your_Wand" , 1);
-        sleepingPotion = new MagicalItem("sleeping_potion" , 4);
+        broom = new MagicalItem("Nimbus 2000", 4);
+        wand = new MagicalItem("your Wand", 1);
+        sleepingPotion = new MagicalItem("sleeping potion", 4);
 
         // where the items are:
 
@@ -79,46 +78,46 @@ class Game {
     private void createRooms() {
 
         // create the rooms
-        Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0);
-        QuidditchStadium = new Room("in the Quidditch stadium", 0, 0);
-        TrainingField = new Room("on the training field where Madam Hooch helds her courses", 1, 0);
-        GreatHall = new Room("in the great hall", 0, 0);
-        TrophyRoom = new Room("in the trophy room of Hogwarts", 0, 0);
-        Staircase = new Room("in the only Staircase in the world where the stairs are moving", 0, 0);
-        Basement = new Room("in the basement", 0, 0);
-        BasementPortrait = new Room("infront of the basement portrait", 0, 0);
+        Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0 , wand);
+        QuidditchStadium = new Room("in the Quidditch stadium", 0, 0 , wand );
+        TrainingField = new Room("on the training field where Madam Hooch helds her courses", 1, 0, wand);
+        GreatHall = new Room("in the great hall", 0, 0, wand);
+        TrophyRoom = new Room("in the trophy room of Hogwarts", 0, 0 , wand);
+        Staircase = new Room("in the only Staircase in the world where the stairs are moving", 0, 0, wand);
+        Basement = new Room("in the basement", 0, 0, wand);
+        BasementPortrait = new Room("infront of the basement portrait", 0, 0, wand);
         SlytherinCommonRoom = new Room(
-                "infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter", 0, 0);
-        PotionsClassRoom = new Room("in the class room for the subject Potions", 1, 0);
-        FirstFloor = new Room("in the first floor of the staircase", 0, 0);
-        FirstFloorHallway = new Room("in the hallway of the first floor", 0, 0);
+                "infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter", 0, 0, wand);
+        PotionsClassRoom = new Room("in the class room for the subject Potions", 1, 0 , potionsBook);
+        FirstFloor = new Room("in the first floor of the staircase", 0, 0, wand);
+        FirstFloorHallway = new Room("in the hallway of the first floor", 0, 0, wand);
         HuffelpuffCommonRoom = new Room(
-                "infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter", 0, 0);
-        HerbalismClassRoom = new Room("in the class room for the subject herbalism", 1, 0);
-        SecondFloor = new Room("in the second floor of the staircase", 0, 0);
-        Libary = new Room("in the Libary of Hogwarts", 1, 0);
-        InnerCourtyard = new Room("in the inner courtyard", 0, 0);
-        TransformationClassRoom = new Room("in the class room for the subject transformation", 1, 0);
+                "infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter", 0, 0, wand);
+        HerbalismClassRoom = new Room("in the class room for the subject herbalism", 1, 0, herbalismBook);
+        SecondFloor = new Room("in the second floor of the staircase", 0, 0, wand);
+        Libary = new Room("in the Libary of Hogwarts", 1, 0, wand);
+        InnerCourtyard = new Room("in the inner courtyard", 0, 0, wand);
+        TransformationClassRoom = new Room("in the class room for the subject transformation", 1, 0, transformationsBook);
         SmartWizardPortrait = new Room(
-                "infront of the Portrait of the smart wizard. You are allowed to go through this portrait", 0, 0);
-        ThirdFloor = new Room("in the third floor of the staircase", 0, 0);
+                "infront of the Portrait of the smart wizard. You are allowed to go through this portrait", 0, 0, wand);
+        ThirdFloor = new Room("in the third floor of the staircase", 0, 0, wand);
         ThirdFloorHallway = new Room("in the hallway of the third floor. You were told to stay away from this hallway!",
-                0, 0);
-        FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!", 0, 0);
-        FourthFloor = new Room("in the fourth floor of the staircase", 0, 0);
-        FourthFloorHallway = new Room("in the hallway of the fourth floor", 0, 0);
-        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2);
-        FifthFloor = new Room("in the fifth floor of the staircase", 0, 0);
-        FifthFloorHallway = new Room("in the hallway of the fifth floor", 0, 0);
+                0, 0, wand);
+        FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!", 0, 0, wand);
+        FourthFloor = new Room("in the fourth floor of the staircase", 0, 0, wand);
+        FourthFloorHallway = new Room("in the hallway of the fourth floor", 0, 0, wand);
+        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2 , defenceAigainstTheDarkArtsBook);
+        FifthFloor = new Room("in the fifth floor of the staircase", 0, 0, wand);
+        FifthFloorHallway = new Room("in the hallway of the fifth floor", 0, 0, wand);
         RawenclawCommonRoom = new Room(
-                "infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter", 0, 0);
-        ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0);
-        SixthFloor = new Room("in the sixth floor of the staircase", 0, 0);
-        DumbeldorsOffice = new Room("in Dubeldore`s office", 0, 4);
-        SixthFloorHallway = new Room("in the hallway of the sixth floor", 0, 0);
-        SeventhFloor = new Room("in the seventh floor of the staircase", 0, 0);
+                "infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter", 0, 0, wand);
+        ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0 , wand);
+        SixthFloor = new Room("in the sixth floor of the staircase", 0, 0, wand);
+        DumbeldorsOffice = new Room("in Dubeldore`s office", 0, 4, wand);
+        SixthFloorHallway = new Room("in the hallway of the sixth floor", 0, 0, wand);
+        SeventhFloor = new Room("in the seventh floor of the staircase", 0, 0, wand);
         GryffindorCommonRoom = new Room(
-                "infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter", 0, 0);
+                "infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter", 0, 0, wand);
 
         // initialise room exits
         // outside
@@ -284,12 +283,11 @@ class Game {
         else if (commandWord.equals("look"))
             look();
         else if (commandWord.equals("pick"))
-           pick(command);
+            pick(command);
         else if (commandWord.equals("drop"))
-           drop(command);
+            drop(command);
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
-         
 
         if (currentRoom == DumbeldorsOffice) {
             System.out.println("The Sorting Hat will give you your briefing. Congratulations, you won the Game!");
@@ -316,60 +314,64 @@ class Game {
         System.out.println("learning progress " + player.getLearn());
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help learn look");
+        System.out.println("   go quit help learn look pick drop");
+        System.out.println("Syntax for handling Items are drop and pick followed by the Item number");
     }
 
     private void learn() {
         if (currentRoom.getHasLearned() == false) {
-            // to something important
-            System.out.println("Has learned: " + currentRoom.getLearningeffect());
-            currentRoom.setHasLearned();
-            player.setLearn(currentRoom.getLearningeffect());
+            if (player.getInventoryList().contains(wand)) {
+                // to something important
+                System.out.println("Has learned: " + currentRoom.getLearningeffect());
+                currentRoom.setHasLearned();
+                player.setLearn(currentRoom.getLearningeffect());
+            } else {
+                System.out.println("you need your wand to start learning");
+            }
         } else {
             System.out.println("You alredy learned in this room!");
 
         }
     }
 
-    
+    private void look() {
 
-    private void look(){
-        
         System.out.println("the room contains following Items:" + currentRoom.getItems());
         System.out.println("your inventory contains following Items:" + player.getItems());
     }
 
-    private void pick(Command command){
-        Item result = new Item("dummy_Item" , 0);
-       String itemtopick = command.getSecondWord();
-      for (Item i : currentRoom.getItemsList()){
-          if (i.getName() == itemtopick){
-            result = i;
-          }
-      
-    }
+    private void pick(Command command) {
+        try {
+            String itemtopick = command.getSecondWord();
 
-       if (result.getName() != "dummy_Item"){
-       if (player.addItems(result)){
-        System.out.println ("successfully picked " + itemtopick);
-       }
-    }
-    }
+            Item result = currentRoom.getItemsList().get(Integer.parseInt(itemtopick) - 1);
 
-    private void drop(Command command){
-        Item dropItem = new Item ("dummy_Item_2" , 0);
-      String itemtodrop = command.getSecondWord();
-      for (Item i : player.getInventoryList()){
-        if (i.getName() == itemtodrop){
-            dropItem = i;
+            if (player.addItems(result)) {
+                System.out.println("successfully picked " + result.getName());
+                currentRoom.removeItems(result);
+            } else
+                System.out.println("your inventory is full");
+        } catch (Exception e) {
+            System.out.println("You could not pick an item because of following error: " + e.toString());
+            System.out.println("Please try again!");
         }
-       
     }
-      if (dropItem.getName() != "dummy_Item_2"){
-      if (player.removeItems(dropItem)){
-        System.out.println ("successfully droped " + itemtodrop);
-      }
-    }
+
+    private void drop(Command command) {
+        try {
+            String itemtodrop = command.getSecondWord();
+
+            Item dropItem = player.getInventoryList().get(Integer.parseInt(itemtodrop) - 1);
+
+            if (player.removeItems(dropItem)) {
+                System.out.println("successfully droped " + itemtodrop);
+                currentRoom.setItems(dropItem);
+            } else
+                System.out.println("you cant drop that Item");
+        } catch (Exception e) {
+            System.out.println("You could not drop an item because of following error: " + e.toString());
+            System.out.println("Please try again!");
+        }
     }
 
     /**
@@ -394,8 +396,11 @@ class Game {
 
         else if (player.getLearn() < nextRoom.getRequiredLearningPoints()) {
             System.out.println("You are not smart enough to enter this room. You need to learn more");
-
-        } else {
+        }
+        else if (player.getInventoryList() != nextRoom.getRequiredLearningItem()){
+         System.out.println("you dont have the required item to enter this room!");   
+        }
+        else {
             currentRoom = nextRoom;
 
             System.out.println("you are " + currentRoom.getDescription());
