@@ -38,14 +38,14 @@ class Game {
             GryffindorCommonRoom;
 
     private Book herbalismBook, potionsBook, transformationsBook, defenceAigainstTheDarkArtsBook;
-    private MagicalItem broom, wand, sleepingPotion;
+    private MagicalItem broom, wand;
 
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
-        createRooms();
         createItems();
+        createRooms();
         parser = new Parser();
         player = new Player(10);
     }
@@ -58,18 +58,9 @@ class Game {
 
         broom = new MagicalItem("Nimbus 2000", 4);
         wand = new MagicalItem("your Wand", 1);
-        sleepingPotion = new MagicalItem("sleeping potion", 4);
 
         // where the items are:
 
-        Libary.setItems(herbalismBook);
-        Libary.setItems(potionsBook);
-        Libary.setItems(transformationsBook);
-        Libary.setItems(defenceAigainstTheDarkArtsBook);
-
-        GreatHall.setItems(broom);
-        Bellcourt.setItems(wand);
-        PotionsClassRoom.setItems(sleepingPotion);
     }
 
     /**
@@ -78,26 +69,30 @@ class Game {
     private void createRooms() {
 
         // create the rooms
-        Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0 , wand);
-        QuidditchStadium = new Room("in the Quidditch stadium", 0, 0 , wand );
-        TrainingField = new Room("on the training field where Madam Hooch helds her courses", 1, 0, wand);
+
+        Bellcourt = new Room("in the courtyard infront of the bell tower", 0, 0, wand);
+        QuidditchStadium = new Room("in the Quidditch stadium", 0, 0, wand);
+        TrainingField = new Room("on the training field where Madam Hooch helds her courses", 1, 0, broom);
         GreatHall = new Room("in the great hall", 0, 0, wand);
-        TrophyRoom = new Room("in the trophy room of Hogwarts", 0, 0 , wand);
+        TrophyRoom = new Room("in the trophy room of Hogwarts", 0, 0, wand);
         Staircase = new Room("in the only Staircase in the world where the stairs are moving", 0, 0, wand);
         Basement = new Room("in the basement", 0, 0, wand);
         BasementPortrait = new Room("infront of the basement portrait", 0, 0, wand);
         SlytherinCommonRoom = new Room(
-                "infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter", 0, 0, wand);
-        PotionsClassRoom = new Room("in the class room for the subject Potions", 1, 0 , potionsBook);
+                "infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter", 0, 0,
+                wand);
+        PotionsClassRoom = new Room("in the class room for the subject Potions", 1, 0, potionsBook);
         FirstFloor = new Room("in the first floor of the staircase", 0, 0, wand);
         FirstFloorHallway = new Room("in the hallway of the first floor", 0, 0, wand);
         HuffelpuffCommonRoom = new Room(
-                "infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter", 0, 0, wand);
+                "infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter", 0, 0,
+                wand);
         HerbalismClassRoom = new Room("in the class room for the subject herbalism", 1, 0, herbalismBook);
         SecondFloor = new Room("in the second floor of the staircase", 0, 0, wand);
         Libary = new Room("in the Libary of Hogwarts", 1, 0, wand);
         InnerCourtyard = new Room("in the inner courtyard", 0, 0, wand);
-        TransformationClassRoom = new Room("in the class room for the subject transformation", 1, 0, transformationsBook);
+        TransformationClassRoom = new Room("in the class room for the subject transformation", 1, 0,
+                transformationsBook);
         SmartWizardPortrait = new Room(
                 "infront of the Portrait of the smart wizard. You are allowed to go through this portrait", 0, 0, wand);
         ThirdFloor = new Room("in the third floor of the staircase", 0, 0, wand);
@@ -106,26 +101,29 @@ class Game {
         FluffysRoom = new Room("you entered Fluffy`s room. He will try to kill you!", 0, 0, wand);
         FourthFloor = new Room("in the fourth floor of the staircase", 0, 0, wand);
         FourthFloorHallway = new Room("in the hallway of the fourth floor", 0, 0, wand);
-        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2 , defenceAigainstTheDarkArtsBook);
+        DefenceAgainstTheDarkArts = new Room("in the class room for defence against the dark arts", 1, 2,
+                defenceAigainstTheDarkArtsBook);
         FifthFloor = new Room("in the fifth floor of the staircase", 0, 0, wand);
         FifthFloorHallway = new Room("in the hallway of the fifth floor", 0, 0, wand);
         RawenclawCommonRoom = new Room(
-                "infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter", 0, 0, wand);
-        ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0 , wand);
+                "infront of the portrait of the Rawenclaw common room. Only Rawenclaws are allowed to enter", 0, 0,
+                wand);
+        ProphesyClassRoom = new Room("in the class room for the subject probhesy", 1, 0, wand);
         SixthFloor = new Room("in the sixth floor of the staircase", 0, 0, wand);
         DumbeldorsOffice = new Room("in Dubeldore`s office", 0, 4, wand);
         SixthFloorHallway = new Room("in the hallway of the sixth floor", 0, 0, wand);
         SeventhFloor = new Room("in the seventh floor of the staircase", 0, 0, wand);
         GryffindorCommonRoom = new Room(
-                "infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter", 0, 0, wand);
+                "infront of the portrait of the Gryfinndor common romm. Only Gryffindors are allowed to enter", 0, 0,
+                wand);
 
         // initialise room exits
         // outside
         Bellcourt.setExit("north", GreatHall);
-        Bellcourt.setExit("south", QuidditchStadium);
-        QuidditchStadium.setExit("north", Bellcourt);
-        QuidditchStadium.setExit("south", TrainingField);
-        TrainingField.setExit("north", QuidditchStadium);
+        Bellcourt.setExit("south", TrainingField);
+        TrainingField.setExit("north", Bellcourt);
+        TrainingField.setExit("south", QuidditchStadium);
+        QuidditchStadium.setExit("north", TrainingField);
 
         // inside
         GreatHall.setExit("north", TrophyRoom);
@@ -209,6 +207,14 @@ class Game {
         GryffindorCommonRoom.setExit("south", SeventhFloor);
 
         currentRoom = Bellcourt; // start game outside
+
+        Libary.setItems(herbalismBook);
+        Libary.setItems(potionsBook);
+        Libary.setItems(transformationsBook);
+        Libary.setItems(defenceAigainstTheDarkArtsBook);
+
+        GreatHall.setItems(broom);
+        Bellcourt.setItems(wand);
     }
 
     /**
@@ -397,10 +403,10 @@ class Game {
         else if (player.getLearn() < nextRoom.getRequiredLearningPoints()) {
             System.out.println("You are not smart enough to enter this room. You need to learn more");
         }
-        else if (player.getInventoryList() != nextRoom.getRequiredLearningItem()){
-         System.out.println("you dont have the required item to enter this room!");   
-        }
-        else {
+
+        else if (player.getInventoryList().contains(nextRoom.getRequiredLearningItem()) == false) {
+            System.out.println("you dont have the required item to enter this room!");
+        } else {
             currentRoom = nextRoom;
 
             System.out.println("you are " + currentRoom.getDescription());

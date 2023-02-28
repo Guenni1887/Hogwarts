@@ -25,14 +25,13 @@ class Room {
     private int requiredLearningPoints;
     private List<Item> items;
     private Item requiredLearningItem;
-     
 
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      */
-    public Room(String description, int effect, int points , Item requiredItem) {
+    public Room(String description, int effect, int points, Item requiredItem) {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.learningEffect = effect;
@@ -53,12 +52,7 @@ class Room {
 
     public Item getRequiredLearningItem() {
         return this.requiredLearningItem;
-
     }
-
-
-
-   
 
     public boolean getHasLearned() {
         return (hasLearned);
@@ -80,7 +74,9 @@ class Room {
      * to another room or is null (no exit there).
      */
     public void setExit(String direction, Room nextRoom) {
-        exits.put(direction, nextRoom);
+     
+            exits.put(direction, nextRoom);
+    
     }
 
     public String getExitsasString() {
@@ -104,24 +100,26 @@ class Room {
     public Room getExit(String direction) {
         return (Room) exits.get(direction);
     }
-    public void removeItems(Item i){
-          items.remove(i);
+
+    public void removeItems(Item i) {
+        items.remove(i);
     }
 
-    public void setItems(Item i){
+    public void setItems(Item i) {
         items.add(i);
     }
 
-    public List<Item> getItemsList(){
-     return this.items;
+    public List<Item> getItemsList() {
+        return this.items;
     }
-    public String getItems(){
-       String rueckgabe = "";       
-       for (Item i : this.items){
-        rueckgabe += " | "+ i.getName();
-       }
-       rueckgabe += " | ";
-       return rueckgabe;
+
+    public String getItems() {
+        String rueckgabe = "";
+        for (Item i : this.items) {
+            rueckgabe += " | " + i.getName();
+        }
+        rueckgabe += " | ";
+        return rueckgabe;
     }
 
 }
