@@ -1,0 +1,389 @@
+Welcome to Hogwarts, Henry Potter!
+The other first years got their breifing. If you dont have it, you need to find the sorting hat to get your briefing and to get sorted in one of the four houses.
+Type 'help' if you need help for that.
+
+you are in the courtyard infront of the belltower
+exits: south north 
+> help
+You need to find the Sorting Hat! you might need to learn new skills to find it
+learning progress 0
+
+Your command words are:
+   go quit help learn look pick drop
+Syntax for handling Items are drop and pick followed by the Item number
+> look
+the room contains following Items: | your Wand | 
+your inventory contains following Items: | 
+> pick 1
+successfully picked your Wand
+> go south
+you dont have the required item to enter this room!
+> go north
+you are in the great hall
+exits: south north west 
+
+> look
+the room contains following Items: | Nimbus 2000 | 
+your inventory contains following Items: | your Wand | 
+> pick 1
+successfully picked Nimbus 2000
+> go south
+you are in the courtyard infront of the bell tower
+exits: south north 
+
+> go south
+you are on the training field where Madam Hooch helds her courses
+exits: south north 
+
+> learn
+Has learned: 1
+> go north
+you are in the courtyard infront of the bell tower
+exits: south north 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | Nimbus 2000 | 
+> drop 2
+successfully droped 2
+> look
+the room contains following Items: | Nimbus 2000 | 
+your inventory contains following Items: | your Wand | 
+> go north
+you are in the great hall
+exits: south north west 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | 
+> go west
+you are in the only Staircase in the world where the stairs are moving
+exits: east up down 
+
+> go east
+you are in the great hall
+exits: south north west 
+
+> go north
+you are in the trophy room of Hogwarts
+exits: south 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | 
+> go south
+you are in the great hall
+exits: south north west 
+
+> go west
+you are in the only Staircase in the world where the stairs are moving
+exits: east up down 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | 
+> go down
+you are in the basement
+exits: east north west up 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | 
+> go up
+you are in the only Staircase in the world where the stairs are moving
+exits: east up down 
+
+> go up
+you are in the first floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the first floor
+exits: east south north 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | 
+> go north
+you are infront of the portrait of the Huffelpuff common room. Only Huffelpuffs are allowed to enter
+exits: south 
+
+> go south
+you are in the hallway of the first floor
+exits: east south north 
+
+> go east
+you dont have the required item to enter this room!
+> go south
+you are in the first floor of the staircase
+exits: north up down 
+
+> go up
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go east
+you are in the inner courtyard
+exits: east north west 
+
+> go west
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go north
+you are infront of the Portrait of the smart wizard. You are allowed to go through this portrait
+exits: through south 
+
+> go south
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go west
+you are in the Libary of Hogwarts
+exits: east south 
+
+> look
+the room contains following Items: | herbalism lexica | book of the half-blood-prince | first year transformatoins | useful curses for beginners | 
+your inventory contains following Items: | your Wand | 
+> pick 3
+successfully picked first year transformatoins
+> pick 1
+successfully picked herbalism lexica
+> go south
+you are in the inner courtyard
+exits: east north west 
+
+> go west
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go east
+you are in the inner courtyard
+exits: east north west 
+
+> go east
+you are in the class room for the subject transformation
+exits: west 
+
+> learn
+Has learned: 1
+> help
+You need to find the Sorting Hat! you might need to learn new skills to find it
+learning progress 2
+
+Your command words are:
+   go quit help learn look pick drop
+Syntax for handling Items are drop and pick followed by the Item number
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | first year transformatoins | herbalism lexica | 
+> go west
+you are in the inner courtyard
+exits: east north west 
+
+> drop 1
+successfully droped 1
+> go west
+you dont have the required item to enter this room!
+> go north
+you dont have the required item to enter this room!
+> look
+the room contains following Items: | your Wand | 
+your inventory contains following Items: | first year transformatoins | herbalism lexica | 
+> pick 1
+successfully picked your Wand
+> drop 1
+successfully droped 1
+> look
+the room contains following Items: | first year transformatoins | 
+your inventory contains following Items: | herbalism lexica | your Wand | 
+> go north
+you are in the Libary of Hogwarts
+exits: east south 
+
+> look
+the room contains following Items: | book of the half-blood-prince | useful curses for beginners | 
+your inventory contains following Items: | herbalism lexica | your Wand | 
+> pick 1
+successfully picked book of the half-blood-prince
+> go south
+you are in the inner courtyard
+exits: east north west 
+
+> go west
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go down
+you are in the first floor of the staircase
+exits: north up down 
+
+> go down
+you are in the only Staircase in the world where the stairs are moving
+exits: east up down 
+
+> go down
+you are in the basement
+exits: east north west up 
+
+> go north
+you are infront of the portrait of the Slytherin common room. Only slytherins are allowed to enter
+exits: south 
+
+> go south
+you are in the basement
+exits: east north west up 
+
+> go east
+you are infront of the basement portrait
+exits: through west 
+
+> go west
+you are in the basement
+exits: east north west up 
+
+> go west
+you are in the class room for the subject Potions
+exits: east 
+
+> learn
+Has learned: 1
+> help
+You need to find the Sorting Hat! you might need to learn new skills to find it
+learning progress 3
+
+Your command words are:
+   go quit help learn look pick drop
+Syntax for handling Items are drop and pick followed by the Item number
+> go east
+you are in the basement
+exits: east north west up 
+
+> go up
+you are in the only Staircase in the world where the stairs are moving
+exits: east up down 
+
+> go up
+you are in the first floor of the staircase
+exits: north up down 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | herbalism lexica | your Wand | book of the half-blood-prince | 
+> drop 3
+successfully droped 3
+> go north
+you are in the hallway of the first floor
+exits: east south north 
+
+> go east
+you are in the class room for the subject herbalism
+exits: west 
+
+> learn
+Has learned: 1
+> go west
+you are in the hallway of the first floor
+exits: east south north 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | herbalism lexica | your Wand | 
+> drop 1
+successfully droped 1
+> go south
+you are in the first floor of the staircase
+exits: north up down 
+
+> go up
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go west
+you are in the Libary of Hogwarts
+exits: east south 
+
+> look
+the room contains following Items: | useful curses for beginners | 
+your inventory contains following Items: | your Wand | 
+> pick 1
+successfully picked useful curses for beginners
+> go east
+you are in the second floor of the staircase
+exits: east north west up down 
+
+> go p
+There is no door!
+> go up
+you are in the third floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the third floor. You were told to stay away from this hallway!
+exits: south north 
+
+> go south
+you are in the third floor of the staircase
+exits: north up down 
+
+> go up
+you are in the fourth floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the fourth floor
+exits: south west 
+
+> go west
+you are in the class room for defence against the dark arts
+exits: east 
+
+> learn
+Has learned: 1
+> go east
+you are in the hallway of the fourth floor
+exits: south west 
+
+> look
+the room contains following Items: | 
+your inventory contains following Items: | your Wand | useful curses for beginners | 
+> drop 2
+successfully droped 2
+> go south
+you are in the fourth floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the fourth floor
+exits: south west 
+
+> go south
+you are in the fourth floor of the staircase
+exits: north up down 
+
+> go up
+you are in the fifth floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the fifth floor
+exits: south west up 
+
+> go south
+you are in the fifth floor of the staircase
+exits: north up down 
+
+> go up
+you are in the sixth floor of the staircase
+exits: north up down 
+
+> go north
+you are in the hallway of the sixth floor
+exits: east south 
+
+> go east
+you are in Dubeldore`s office
+exits: 
+
+The Sorting Hat will give you your briefing. Congratulations, you won the Game!
+Thank you for playing.  Good bye.
